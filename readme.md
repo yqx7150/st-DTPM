@@ -12,7 +12,7 @@ Copyright 2025, School of Information Engineering, Nanchang University.
 
 ----
 
-### Intro
+### Intro :cherry_blossom:
 
 The target of delayed scan PET image prediction is to predict delayed scan PET image from first scan PET image.
 
@@ -20,7 +20,7 @@ The target of delayed scan PET image prediction is to predict delayed scan PET i
 
 ----
 
-### Motivation
+### Motivation :tulip:
 
 The time interval between first and delayed PET image is a crucial factor affecting delayed imaging. And in clinical practice, the time interval for each patient to perform delayed imaging is uncertain.
 
@@ -28,7 +28,7 @@ The time interval between first and delayed PET image is a crucial factor affect
 
 ----
 
-### Proposed
+### Proposed :sunflower:
 
 A **Diffusion** model with **Transformer** under **Spatial-Temporal** guidance is proposed. Spatial condition is first scan PET image; Temporal condition is delay time interval.
 
@@ -36,13 +36,13 @@ A **Diffusion** model with **Transformer** under **Spatial-Temporal** guidance i
 
 ----
 
-### Results 
+### Results :maple_leaf:
 
 ![result](./assert/results.png)
 
 ----
 
-### Training & Testing
+### Training & Testing :evergreen_tree:
 
 **Training for first and delayed PET images. **
 
@@ -73,7 +73,7 @@ python runner/train.py --embDTMode=1 --transEmbDTMode=1 --condition=True --embDT
 
 ----
 
-### Related work
+### Related work :four_leaf_clover:
 
 - [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
 
