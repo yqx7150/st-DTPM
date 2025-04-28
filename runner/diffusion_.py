@@ -87,36 +87,3 @@ def extract(a, t, x_shape):
     batch_size = t.shape[0]
     out = a.gather(-1, t.to(a.device))
     return out.reshape(batch_size, *((1,) * (len(x_shape) - 1))).to(t.device)
-
-
-if __name__ == "__main__":
-    import cv2
-    import sys
-    sys.path.append("..")
-    from torch.utils.data import DataLoader
-    from dataset.DcmDataset import DcmDataset, DcmTransforms
-
-    DcmTransform = DcmTransforms(resolution=96)
-    full_dataset = DcmDataset(datasetRootPath="../../Dual_Time_Dataset/PCP", transforms=DcmTransform)
-    temp_dataloader = DataLoader(
-        dataset=full_dataset,
-        batch_size=1,
-        shuffle=True,
-    )
-
-    timeSteps = 300
-    betas = linear_bate_schedual(timeSteps)
-    Diff = Diffusion(betas=betas, loss_type="l2", timeSteps=timeSteps)
-
-    for batch in temp_dataloader:
-        pet = batch["pet"]
-        petDelay = batch["petDelay"]
-        B = pet.shape[0]
-        for i in range(timeSteps):
-            pet_noise = Diff.q_sample(x_start=petDelay, t=torch.full((B,), fill_value=i, dtype=torch.long))
-            cv2.imwrite(f"./temp/petDelay_noise{i}.png", DcmTransform.reverse_transform(pet_noise))
-        break
-    cv2.imwrite(f"./temp/pet.png", DcmTransform.reverse_transform(pet))
-
-    cv2.imwrite(f"./temp/GuN.png", torch.randn(96, 96, 1).numpy()*255)
-

@@ -38,11 +38,3 @@ def fid_score_(real_image_folder, generated_image_folder, device):
                                                     dims=2048,
                                                     )
     return fid_value
-
-if __name__ == "__main__":
-
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    fid_score = fid_score_( real_image_folder="../assert/sample_AD_EC/real",
-                            generated_image_folder="../assert/sample_AD_EC/gen",
-                            device=device)
-    print(fid_score)

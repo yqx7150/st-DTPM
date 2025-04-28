@@ -58,23 +58,6 @@ def main(args):
         batch_size=1,
         shuffle=False,
     )
-    '''
-    # build fixed dataset
-    DcmTransform = DcmTransforms(resolution=args.height)
-    train_dataset = DcmDatasetFixed(datasetRootPath="../../Dual_Time_Dataset/train", transforms=DcmTransform)
-    test_dataset = DcmDatasetFixed(datasetRootPath="../../Dual_Time_Dataset/test", transforms=DcmTransform)
-    train_dataloader = DataLoader(
-        dataset=train_dataset,
-        batch_size=args.batch_size,
-        shuffle=True,
-    )
-    test_dataloader = DataLoader(
-        dataset=test_dataset,
-        batch_size=1,
-        shuffle=False,
-    )
-
-    '''
     
     # build diffusion
     betas = linear_bate_schedual(args.timeSteps)

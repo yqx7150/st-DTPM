@@ -427,27 +427,3 @@ class Unet(nn.Module):
 
         x = self.final_res_block(x, t, delay_t)
         return self.final_conv(x)
-
-
-        
-if __name__ == "__main__":
-    '''
-    # TB = TransBlock(128, TransEmbDtMode.LINEAR_CAT, time_emb_dim=128, embDT=True)
-    x = torch.randn(32, 64, 32, 32)
-    time = torch.randn(32, 128)
-    delay_time = torch.randn(32, 128)
-    # TB(x, time, delay_time)
-
-    RB = ResBlock(64, 128, embDTMode=EmbDtMode.EACH_BLOCK, time_emb_dim=128)
-    RB(x, time, delay_time)
-    '''
-    from thop import profile
-
-    model = Unet(dim=32)
-    x = torch.randn(1, 1, 96, 96)
-    t = torch.randn(1, )
-    delay_t = torch.randn(1, )
-    y = torch.randn(1, 1, 96, 96)
-
-    flops, params = profile(model=model, inputs=(x, t, delay_t, y))
-    print('the flops is {}G,the params is {}M'.format(round(flops/(10**9),2), round(params/(10**6),2)))
