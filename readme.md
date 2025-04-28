@@ -42,6 +42,37 @@ A **Diffusion** model with **Transformer** under **Spatial-Temporal** guidance i
 
 ----
 
+### Training & Testing
+
+**Training for first and delayed PET images. **
+
+--embDTMode and --transEmbDTMode can choose the method of embedding temporal condition into ConvBlock and TransformerBlock, respectively.
+
+| Option value | Method               |
+| ------------ | -------------------- |
+| 1            | each block embedding |
+| 2            | linear cat embedding |
+| 3            | add embedding        |
+| 4            | linear add embedding |
+
+--condition can choose if use spatial guidance.
+
+--embDT can choose if use temporal guidance.
+
+```python
+python runner/train.py --embDTMode=1 --transEmbDTMode=1 --condition=True --embDT=True --runType="train"
+```
+
+**Testing for specific delay time interval.**
+
+--delayed_time is the delay time interval you given.
+
+```python
+python runner/train.py --embDTMode=1 --transEmbDTMode=1 --condition=True --embDT=True --runType="train" --delayed_time=120
+```
+
+----
+
 ### Related work
 
 - [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239)
