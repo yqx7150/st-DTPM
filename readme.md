@@ -94,6 +94,7 @@ python runner/train.py --embDTMode=1 --transEmbDTMode=1 --condition=True --embDT
         
   * Variable augmented neural network for decolorization and multi-exposure fusion [<font size=5>**[Paper]**</font>](https://www.sciencedirect.com/science/article/abs/pii/S1566253517305298)   [<font size=5>**[Code]**</font>](https://github.com/yqx7150/DecolorNet_FusionNet_code)   [<font size=5>**[Slide]**</font>](https://github.com/yqx7150/EDAEPRec/tree/master/Slide)   
    
+* Positron Emission Tomography Tracer Conversion via Variable Augmented Invertible Network [<font size=5>**[Paper]**</font>](https://link.springer.com/article/10.1007/s12204-025-2844-2) 
 
 ### Related work :four_leaf_clover:
 
